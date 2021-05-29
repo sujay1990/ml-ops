@@ -1,0 +1,7 @@
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings
+
+1.Check your python version and be sure it is installed on your machine
+
+2.Check the path variables
+
+3.Go to -> "start" and type "Manage App Execution Aliases" .Go to it and turn off "python"
