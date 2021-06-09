@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34c29d3-515c-4146-88e9-f55c751d1923" name="Default Changelist" comment="spotify_api folder and code">
+    <list default="true" id="b34c29d3-515c-4146-88e9-f55c751d1923" name="Default Changelist" comment="spotify_api move from kaggle to google storage code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotify_api/spotify_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/spotify_api/spotify_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +52,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/spotify_api/data_to_gc_storage.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/spotify_api/read_csv_from_gs.py" />
   </component>
   <component name="RunManager">
     <configuration name="season_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -68,7 +67,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/spotify_api/data_to_gc_storage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/spotify_api/read_csv_from_gs.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623029482160</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="spotify_api move from kaggle to google storage code">
+      <created>1623124363877</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1623124363878</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,6 +189,7 @@
     <MESSAGE value="Webscrapping - created a webscrapping script to download season results across all leagues" />
     <MESSAGE value="Webscrapping - changed directory structure, added data dir" />
     <MESSAGE value="spotify_api folder and code" />
-    <option name="LAST_COMMIT_MESSAGE" value="spotify_api folder and code" />
+    <MESSAGE value="spotify_api move from kaggle to google storage code" />
+    <option name="LAST_COMMIT_MESSAGE" value="spotify_api move from kaggle to google storage code" />
   </component>
 </project>
