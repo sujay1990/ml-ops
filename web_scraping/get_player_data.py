@@ -168,6 +168,7 @@ def get_player_stats(pos, pos_stats, ps):
             Select(driver.find_element_by_xpath("// *[ @ id = 'position']")).select_by_visible_text(str(position))
             Select(driver.find_element_by_xpath("//*[@id='start']")).select_by_value(str(match_day))
             Select(driver.find_element_by_xpath("//*[@id='end']")).select_by_value(str(match_day))
+            time.sleep(3.0)
             driver.find_element_by_xpath("// *[ @ id = 'stats']/div[2]/div[2]/div[5]/button").click()
             time.sleep(15.0)
             driver.find_element_by_xpath("// *[ @ id = 'stats-table']/div[4]/div[2]/button[2]").click()
@@ -178,16 +179,17 @@ def get_player_stats(pos, pos_stats, ps):
         for i in range(1, 38):
             csv_files.append("rotowire-stats ({}).csv".format(i))
 
-        for i in range(len(pos_stats)):
-
-            pos_stats[i] = pos_stats[i].upper()
-
         result = [x for x in stats if x not in pos_stats]
+
+        for i in range(len(result)):
+
+            result[i] = result[i].upper()
 
         combined_csv = pd.concat([pd.read_csv(f) for f in csv_files])
         combined_csv.drop(result, axis=1, inplace=True)
         filename = "%s_%s_stat.csv" % (str(pos), str(season))
         combined_csv.to_csv(filename)
+        print("combined csv {} is created".format(filename))
 
 
-get_player_stats(fw, fw_stats, 'F')
+get_player_stats(mid, mid_stats, 'M')
