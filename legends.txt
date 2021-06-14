@@ -1,5 +1,4 @@
-definitions: [
-                    { name: 'GP', def: 'Games Played', },
+{ name: 'GP', def: 'Games Played', },
                     { name: 'ST', def: 'Starts', },
                     { name: 'ON', def: 'Sub On', },
                     { name: 'OFF', def: 'Sub Off', },
@@ -87,4 +86,3 @@ definitions: [
 					{ name: 'CCSP', def: 'Chances Created From Set Play', },
                     { name: 'LPOPP', def: 'Long Pass Made From Player\'s Half into Opp Half', },
                 ]
-//*[@id="stats-table"]/div[4]/div[2]/button[2]
