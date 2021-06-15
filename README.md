@@ -11,4 +11,4 @@ Do the individual performances and stats only mean something if they are in the 
 
 The players play a huge role in winning games but a better team doesn't necessarily win against a weak team on a given day. That would make the game really boring. So if any team can win on a given day, why do past stats and performances even matter ? Why do teams want best players to play for them ? What makes a team better than other teams ? How does a weak team win against a better team ? is it always luck or is there something more ?
 
-This motivated me to take a stab at trying to predict the outcome of a game based off of past performances by the players playing, also
+This motivated me to take a stab at trying to predict the outcome of a game based off of real time stats of players. The model will learn the outcome of games where 
