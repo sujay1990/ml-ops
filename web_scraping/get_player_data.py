@@ -65,7 +65,7 @@ else:
 # Choose stats for defensive position
 
 
-def get_player_stats(pos, pos_stats, ps):
+def get_player_stats(pos, ps):
 
     os.chdir("F:\\Road to Opta\\player_stats\\%s" % str(pos))
     season = range(2016, 2021)
@@ -94,8 +94,6 @@ def get_player_stats(pos, pos_stats, ps):
         # Enter User name
         print("Enter username:")
         # username = input()
-        username = 'sujay1990'
-        p = 'barcelona10!!'
         # p = getpass.getpass()
         print("Password entered")
 
@@ -106,7 +104,7 @@ def get_player_stats(pos, pos_stats, ps):
 
         # Login in
         driver.find_element_by_xpath("/html/body/div[1]/div/main/div/div[1]/form/button").click()
-
+        time.sleep(2.0)
         while driver.find_element_by_xpath("/html/body/div[1]/div/main/div[1]").text == "Either the username or password was incorrect.":
             print("Enter the right password")
             p = getpass.getpass()
@@ -129,8 +127,6 @@ def get_player_stats(pos, pos_stats, ps):
         driver.find_element_by_xpath("//*[@id='stats']/div[2]/div[1]/div[6]").click()  # Seria A
         driver.find_element_by_xpath("//*[@id='stats']/div[2]/div[1]/div[7]").click()  # Ligue 1
         driver.find_element_by_xpath("//*[@id='stats']/div[2]/div[1]/div[8]").click()  # Bundesliga
-        print(stats_xpath)
-        print(pos_stats)
         time.sleep(5.0)
         # Check all the stats for the position
 
@@ -170,26 +166,27 @@ def get_player_stats(pos, pos_stats, ps):
             Select(driver.find_element_by_xpath("//*[@id='end']")).select_by_value(str(match_day))
             time.sleep(3.0)
             driver.find_element_by_xpath("// *[ @ id = 'stats']/div[2]/div[2]/div[5]/button").click()
-            time.sleep(15.0)
+            time.sleep(12.0)
             driver.find_element_by_xpath("// *[ @ id = 'stats-table']/div[4]/div[2]/button[2]").click()
-            time.sleep(5.0)
+            time.sleep(3.0)
             print("Downloaded Matchday", match_day)
 
         csv_files = ["rotowire-stats.csv"]
         for i in range(1, 38):
             csv_files.append("rotowire-stats ({}).csv".format(i))
 
-        result = [x for x in stats if x not in pos_stats]
-
-        for i in range(len(result)):
-
-            result[i] = result[i].upper()
+        # result = [x for x in stats if x not in pos_stats]
+        #
+        # for i in range(len(result)):
+        #
+        #     result[i] = result[i].upper()
 
         combined_csv = pd.concat([pd.read_csv(f) for f in csv_files])
-        combined_csv.drop(result, axis=1, inplace=True)
-        filename = "%s_%s_stat.csv" % (str(pos), str(season))
+        # combined_csv.drop(result, axis=1, inplace=True)
+        filename = "%s_%s_stats.csv" % (str(pos), str(season))
         combined_csv.to_csv(filename)
         print("combined csv {} is created".format(filename))
 
 
-get_player_stats(mid, mid_stats, 'M')
+get_player_stats(gk, 'GK')
+get_player_stats(defense, 'D')

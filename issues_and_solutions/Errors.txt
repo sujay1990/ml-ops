@@ -5,3 +5,11 @@ Python was not found; run without arguments to install from the Microsoft Store,
 2.Check the path variables
 
 3.Go to -> "start" and type "Manage App Execution Aliases" .Go to it and turn off "python"
+
+
+Unable to delete folders in use
+
+run -> resmon.exe
+
+Associate handles
+search folder name
