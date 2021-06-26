@@ -13,7 +13,8 @@ The players play a huge role in winning games but a better team doesn't necessar
 
 This motivated me to take a stab at trying to predict the outcome of a game based off of real time stats of players. The model will learn the outcome of games based off of only the individual stats of players in different positions. 
 
-#Challenges
+# Challenges
 
--##Getting the data for training:
+## Getting the data for training:
 
+The first obvious challenge was getting a dataset that contained individual player stats of games from various european leagues. I managed to get a paid subscription from Rotowire where I can get players stats data from all games played in europe from Season 2016 to 2020. The data is available in a csv report format that can be downloaded directly from the website. I 
