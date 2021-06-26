@@ -17,4 +17,8 @@ This motivated me to take a stab at trying to predict the outcome of a game base
 
 ## Getting the data for training:
 
-The first obvious challenge was getting a dataset that contained individual player stats of games from various european leagues. I managed to get a paid subscription from Rotowire where I can get players stats data from all games played in europe from Season 2016 to 2020. The data is available in a csv report format that can be downloaded directly from the website. I 
+The first obvious challenge was getting a dataset that contained individual player stats of games from various european leagues. I managed to get a paid subscription from Rotowire where I can get players stats data from all games played in europe from Season 2016 to 2020. The data is available in a csv format that can be downloaded directly from the website. But the problem was the data gave cumulative stats of players for one season. For our use case, we are trying to find out how individual player stats affect the outcome of a given match. So I had to write a data extraction code that downloads the csv reports for individual match days and saves them in a given location. 
+
+## Player positions and their respective stats
+
+The next challenge didn't surface till I started deciding the feature set of my data. My initial plan was to select relevant player stats for a given position ( e.g. saves for gk, shots for fw, ball recoveries for def etc ) and feed them into the model. This would result in a mismatch of fetures in a single dataset. Having different features for different pplayer positions would result in multiple dataset or one dataset with a lot of empty/ null values. I could substitute irrelevant features with 'NA' string but I wasn't too keen on that idea. So I decided to collect all 87 stats for every position on the field and merge them all to form one dataset.
