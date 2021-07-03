@@ -13,7 +13,20 @@ The players play a huge role in winning games but a better team doesn't necessar
 
 This motivated me to take a stab at trying to predict the outcome of a game based off of real time stats of players. The model will learn the outcome of games based off of only the individual stats of players in different positions. 
 
-#Challenges
+# Challenges
 
--##Getting the data for training:
+## Getting the data for training:
 
+The first obvious challenge was getting a dataset that contained individual player stats of games from various european leagues. I managed to get a paid subscription from Rotowire where I can get players stats data from all games played in europe from Season 2016 to 2020. The data is available in a csv format that can be downloaded directly from the website. But the problem was the data gave cumulative stats of players for one season. For our use case, we are trying to find out how individual player stats affect the outcome of a given match. So I had to write a data extraction code that downloads the csv reports for individual match days and saves them in a given location. 
+
+## Player positions and their respective stats
+
+The next challenge didn't surface till I started deciding the feature set of my data. My initial plan was to select relevant player stats for a given position ( e.g. saves for gk, shots for fw, ball recoveries for def etc ) and feed them into the model. This would result in a mismatch of fetures in a single dataset. Having different features for different pplayer positions would result in multiple dataset or one dataset with a lot of empty/ null values. I could substitute irrelevant features with 'NA' string but I wasn't too keen on that idea. So I decided to collect all 87 stats for every position on the field and merge them all to form one dataset.
+
+## Getting real time data
+
+After a lot of searching and struggle, I figured that getting real time data to match the training set was going to be a tasking and lengthy job. There are websites where I can webscrap real time stats to collect the data, but while thinking about that, I was able to come up with 2 more use cases that are more immediate and practical. 
+
+One of the use cases was the ability to find similar players to the ones that you are most interested in. e.g. you might want to find a player similar to a quick winger, maybe someone with many dribbles completed and high number of crosses. What if a model can recommend top 5 similar players. This might be useful to uncover players that might be similar in ways than we realize. This use case doesn't need real time data.
+
+Another use case is solely related to scoring, expected goals from individual players based on their real time stats. This is similar to our final use case, which is predicting the winner based on individual stats. Only the target variable will change between these two use cases. 
