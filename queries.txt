@@ -1,0 +1,62 @@
+Select * from football_dataset_sorted
+LEFT JOIN temp_table ON football_dataset_sorted.season = temp_table.season and
+football_dataset_sorted.league = temp_table.league and
+football_dataset_sorted.team = temp_table.team and
+football_dataset_sorted.opp = temp_table.opp and
+football_dataset_sorted.h_a = temp_table.h_a
+
+SELECT * 
+INTO temp_table
+FROM (
+   Select season, league, team, opp, h_a, sum(g) as team_goals,sum(own) as own_goals from football_dataset_sorted
+group by season, league, team, opp, h_a
+) as x
+order by season, league, team, opp, h_a
+
+Select t1.*,
+(t2.team_goals + t3.own_goals) as team_score, 
+(t3.team_goals + t2.own_goals) as opp_score,
+CASE 
+WHEN (t2.team_goals + t3.own_goals) > (t3.team_goals + t2.own_goals) THEN 'win'
+WHEN (t2.team_goals + t3.own_goals) < (t3.team_goals + t2.own_goals) THEN 'loss'
+WHEN (t2.team_goals + t3.own_goals) = (t3.team_goals + t2.own_goals) THEN 'draw'
+END as result into football_scoreline
+from football_dataset_sorted as t1
+LEFT JOIN temp_table as t2 ON t1.season = t2.season and
+t1.league = t2.league and
+t1.team = t2.team and
+t1.opp = t2.opp and
+t1.h_a = t2.h_a
+LEFT JOIN inverse_scoreline as t3 ON t1.season = t3.season and
+t1.league = t3.league and
+t1.team = t3.team and
+t1.opp = t3.opp and
+t1.h_a = t3.h_a;
+
+
+Select  * into results from temp_table t1
+LEFT JOIN (Select season as s1, league as l1,team as t,opp as o,h_a as ha, team_goals as opp_goals, own_goals as opp_own_goals from temp_table) t2
+ON t1.season = t2.s1 and
+t1.league = t2.l1 and
+t1.team = t2.o and
+t1.opp = t2.t
+where 
+t1.h_a != t2.ha
+
+Select t1.*,
+(t2.team_goals + t2.opp_own_goals) as team_score, 
+(t2.opp_goals + t2.own_goals) as opp_score,
+CASE 
+WHEN (t2.team_goals + t2.opp_own_goals) > (t2.opp_goals + t2.own_goals) THEN 'win'
+WHEN (t2.team_goals + t2.opp_own_goals) < (t2.opp_goals + t2.own_goals) THEN 'loss'
+WHEN (t2.team_goals + t2.opp_own_goals) = (t2.opp_goals + t2.own_goals) THEN 'draw'
+END as result into football_scoreline
+from football_dataset_sorted as t1
+LEFT JOIN results as t2 ON t1.season = t2.season and
+t1.league = t2.league and
+t1.team = t2.team and
+t1.opp = t2.opp and
+t1.h_a = t2.h_a
+
+
+
