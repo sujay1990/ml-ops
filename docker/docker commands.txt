@@ -1,0 +1,7 @@
+docker rmi -f 
+
+docker build . -t similarity_app:test
+
+docker exec -it similarity /bin/sh
+
+docker run -d --name similarity -it similarity_app:test
