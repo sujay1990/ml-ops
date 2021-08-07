@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: similarity-deploy
+  labels:
+    app: similarity-app
+spec:
+  selector:
+    matchLabels:
+      app: similarity-app
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: similarity-app
+    spec:
+      containers:
+      - name: similarity-app
+        image: sujay1990/similarity_app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
